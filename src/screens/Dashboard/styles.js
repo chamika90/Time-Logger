@@ -8,6 +8,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     margin: 10,
+    marginTop: 30,
   },
   timerContainer: {
     backgroundColor: "#9CAAA6",

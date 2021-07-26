@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Text, View, TextInput } from "react-native";
+import { Text, View, TextInput, SafeAreaView } from "react-native";
 import { connect, useDispatch } from "react-redux";
 
 import { addComments } from "../../redux/actions/commentsActions";
@@ -91,7 +91,7 @@ const Dashboard = () => {
   };
 
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <View style={styles.timerContainer}>
         <Text style={styles.timer}>{formattedTime}</Text>
       </View>
@@ -135,7 +135,7 @@ const Dashboard = () => {
           />
         </View>
       </View>
-    </View>
+    </SafeAreaView>
   );
 };
 

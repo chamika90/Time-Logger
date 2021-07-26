@@ -1,5 +1,13 @@
-import React, { useEffect, useState } from "react";
-import { Text, View, TouchableOpacity, Image, FlatList } from "react-native";
+import React, { useEffect, useState, useRef } from "react";
+import {
+  Text,
+  View,
+  TouchableOpacity,
+  Image,
+  FlatList,
+  SafeAreaView,
+  StatusBar,
+} from "react-native";
 import { useDispatch, useSelector } from "react-redux";
 import { updateComments } from "../../redux/actions/commentsActions";
 import Images from "../../assets/images";
@@ -14,7 +22,7 @@ const CommentRow = ({ title, value }) => {
   );
 };
 
-const Comment = ({ data, onDeletePress }) => {
+const Comment = ({ data, onDeletePress, selectedAnim }) => {
   return (
     <View style={styles.commentContainer}>
       <TouchableOpacity
@@ -25,6 +33,7 @@ const Comment = ({ data, onDeletePress }) => {
       >
         <Image source={Images.ic_close} style={styles.deleteIcon} />
       </TouchableOpacity>
+
       <CommentRow title={"Date"} value={data.date} />
       <CommentRow title={"Duration"} value={data.duration} />
       <CommentRow title={"Description"} value={data.description} />
@@ -69,7 +78,8 @@ const Comments = () => {
   };
 
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
+      <StatusBar style="auto" />
       {(commentList.length > 0 && (
         <FlatList
           data={commentList}
@@ -77,6 +87,7 @@ const Comments = () => {
             <Comment
               data={item}
               onDeletePress={() => handleDeleteComment(item)}
+              selectedAnim={selectedAnim}
             />
           )}
           keyExtractor={(item, index) => index.toString()}
@@ -86,7 +97,7 @@ const Comments = () => {
           <Text>No comments</Text>
         </View>
       )}
-    </View>
+    </SafeAreaView>
   );
 };
 
