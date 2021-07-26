@@ -1,8 +1,7 @@
 import { createStore, compose, applyMiddleware } from "redux";
-import { persistStore, persistCombineReducers } from "redux-persist";
-//import storage from "redux-persist/es/storage"; // default: localStorage if web, AsyncStorage if react-native
+import { persistStore } from "redux-persist";
 
-import rootReducers from "../redux/reducers"; // where reducers is a object of reducers
+import rootReducers from "../redux/reducers";
 
 const middleware = [];
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

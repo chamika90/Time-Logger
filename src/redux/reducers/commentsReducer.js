@@ -12,7 +12,6 @@ const commentsReducer = (state = initialState, { type, payload = {} }) => {
         commentsList: [...state.commentsList, payload],
       };
     case types.UPDATE_COMMENTS:
-      console.log("UPDATE_COMMENTS -->", payload);
       return {
         ...state,
         commentsList: payload,
